@@ -64,7 +64,7 @@ class Server:
 
     def run(self, sockets: Optional[List[socket.socket]] = None) -> None:
         self.config.setup_event_loop()
-        return asyncio.run(self.serve(sockets=sockets))
+        return asyncio.create_task(self.serve(sockets=sockets))
 
     async def serve(self, sockets: Optional[List[socket.socket]] = None) -> None:
         process_id = os.getpid()
